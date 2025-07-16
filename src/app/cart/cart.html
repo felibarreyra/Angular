@@ -1,0 +1,22 @@
+<h6 class="cart-title m-2">🛍️ Mis compras</h6>
+
+<ng-container *ngIf="(cartList$ | async) as cartList">
+  <div *ngIf="cartList.length === 0" class="text-center text-muted p-2">
+    No has comprado nada aún.
+  </div>
+
+  <ul *ngIf="cartList.length > 0" class="list-unstyled m-0 p-2">
+    <li *ngFor="let c of cartList">
+      {{ c.nombre }} : {{ c.quantity }}
+    </li>
+  </ul>
+
+  <ul *ngIf="cartList.length > 0">
+    <span class="text-success">
+      Total:
+      {{ getTotal(cartList) | currency:'ARS' }}
+    </span>
+  </ul>
+</ng-container>
+
+
